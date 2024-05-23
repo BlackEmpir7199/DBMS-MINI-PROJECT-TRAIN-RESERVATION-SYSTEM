@@ -1,5 +1,5 @@
 import streamlit as st
-import database
+from pages.database import database
 
 def display():
     st.title("View Tickets")
