@@ -332,6 +332,17 @@ def delete_trains_by_station(station_name):
     # Example usage
     add_train("Express", 200)
 ```
+## Running The Application
+
+Before running the application, ensure that you have completed the configuration steps mentioned above, including setting up streamlit and MySQL integration and any necessary dependencies.
+
+To start the application, use the following command:
+
+```bash
+streamlit run main.py
+```
+
+Make sure you are in the correct directory where `main.py` is located before executing this command. Once the application is running, you can access it in your web browser at the URL provided in the terminal output.
 ## Troubleshooting
 
 If you encounter any issues, consider the following troubleshooting steps:
