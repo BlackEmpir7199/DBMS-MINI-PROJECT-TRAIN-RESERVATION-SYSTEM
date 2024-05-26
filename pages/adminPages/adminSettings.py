@@ -56,7 +56,7 @@ def display():
         st.markdown("Configure system settings and preferences.")
         st.divider()
         st.write("Logout of the system")
-        if st.button("Logout", key="logout"):
+        if st.button("Logout", key="logoutSetting"):
             st.session_state.role = None
             st.session_state.user_logged_in = None
             st.session_state.email = None
