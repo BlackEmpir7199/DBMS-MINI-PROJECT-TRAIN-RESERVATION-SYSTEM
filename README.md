@@ -31,12 +31,11 @@ Set up your MySQL database and create the required tables by following these ste
 
     ```sql
     USE your_database;
-
-CREATE TABLE `stations` (
+    CREATE TABLE `stations` (
   `station_id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`station_id`)
-);
+   );
 
 CREATE TABLE `users` (
   `name` varchar(100) NOT NULL,
@@ -90,6 +89,8 @@ CREATE TABLE `passengers` (
   KEY `booking_id` (`booking_id`),
   CONSTRAINT `passengers_ibfk_1` FOREIGN KEY (`booking_id`) REFERENCES `bookings` (`booking_id`)
 );
+           
+
     ```
 ## Function Definition
 
