@@ -4,7 +4,7 @@ import streamlit as st
 def display():
     if 'role' not in st.session_state:
         st.session_state['role'] = None
-
+    image_path = "assets\\"
     # Show the logo and ask what kind of login
     st.header("iRTS - Railway Reservation System", divider='red')
     col1, col2 = st.columns([1, 1])
@@ -14,7 +14,6 @@ def display():
             cola, colb, colc = st.columns([1, 2, 1])
             with colb:
                 st.markdown("<h3 style='text-align: center;'>User</h3>", unsafe_allow_html=True)
-                image_path = "assets\\"
                 st.image(f"{image_path}Mobile inbox-pana.png", use_column_width=True)
                 if st.button("Enter", key='user'):
                     st.session_state['role'] = 'user'
@@ -26,7 +25,6 @@ def display():
             cola, colb, colc = st.columns([1, 2, 1])
             with colb:
                 st.markdown("<h3 style='text-align: center;'>Admin</h3>", unsafe_allow_html=True)
-                image_path = "assets\\"
                 st.image(f"{image_path}Server-cuate.png", use_column_width=True)
                 if st.button("Enter", key='admin'):
                     st.session_state['role'] = 'admin'

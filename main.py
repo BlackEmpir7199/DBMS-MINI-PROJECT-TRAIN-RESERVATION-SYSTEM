@@ -1,8 +1,8 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-from pages.userPages import userBookTicket, userContactUs, userHome, userViewTickets
+from pages.userPages import userBookTicket, userContactUs, userHome, userViewTickets, userAboutUs
 from pages.onBoarding_and_authentication import login, signup, onboardingLogin
-from pages.adminPages import adminGuide, adminHome, adminSettings
+from pages.adminPages import adminGuide, adminHome, adminSettings, adminManageTrains, adminManageStations
 st.set_page_config(layout="wide")
 
 def status_shower(email, username, status):
@@ -245,12 +245,20 @@ def main():
         else:
             with st.sidebar:
                 st.markdown("<h1 style='text-align: center;'>User Dashboard</h1>", unsafe_allow_html=True)
-                selected = option_menu("Main Menu", ["Home", "Book Ticket", "View Tickets", "Contact Us"],
-                                       icons=['house', 'ticket', 'list', 'envelope'],
+                selected = option_menu("Main Menu", ["Home", "Book Ticket", "View Tickets", "Contact Us", "About Us"],
+                                       icons=['house', 'ticket', 'list', 'envelope', 'code-square'],
                                        menu_icon="train-front", default_index=0)
 
-                status_shower(st.session_state.email, st.session_state.username,
-                              "Logged In" if st.session_state.logged_in else "Logged Out")
+                status_shower(st.session_state.email, st.session_state.username,"Logged In" if st.session_state.logged_in else "Logged Out")
+                col1,col2,col3 = st.columns([1.5,2,1])
+                with col2:
+                    if st.button("Logout", key="logout"):
+                        st.session_state.role = None
+                        st.session_state.user_logged_in = None
+                        st.session_state.email = None
+                        st.session_state.username = None
+                        st.session_state.logged_in = None
+                        st.rerun()
 
             if selected == "Home":
                 userHome.display()
@@ -260,6 +268,8 @@ def main():
                 userViewTickets.display()
             elif selected == "Contact Us":
                 userContactUs.display()
+            elif selected == "About Us":
+                userAboutUs.display()
 
     elif st.session_state.role == 'admin':
         if not st.session_state.get('user_logged_in', False):
@@ -273,6 +283,15 @@ def main():
                                    menu_icon="tools", default_index=0)
                 status_shower(st.session_state.email, "Admin",
                               "Logged In" if st.session_state.user_logged_in else "Logged Out")
+                col1,col2,col3 = st.columns([1.5,2,1])
+                with col2:
+                    if st.button("Logout", key="logout"):
+                        st.session_state.role = None
+                        st.session_state.user_logged_in = None
+                        st.session_state.email = None
+                        st.session_state.username = None
+                        st.session_state.logged_in = None
+                        st.rerun()
 
             if selected == "Home":
                 adminHome.display()
@@ -280,7 +299,11 @@ def main():
                 adminSettings.display()
             if selected == "Guide":
                 adminGuide.display()
-            # Add appropriate functions for the admin menu items as needed
+            if selected == "Manage Trains":
+                adminManageTrains.display()
+            if selected == "Manage Stations":
+                adminManageStations.display()
+
 
 
 if __name__ == "__main__":

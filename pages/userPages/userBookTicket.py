@@ -5,10 +5,11 @@ from pages.userPages import userBookingForm
 
 def display():
     st.title("Book Train Tickets")
-    st.write(st.session_state.email)
+    st.caption(f"**Logged in as:** {st.session_state.email}")
     # Search filter
     st.subheader("Search Filter")
     col1, col2, col3 = st.columns(3)
+    st.subheader("Search Filter")
     with col1:
         from_station = st.selectbox("From", options=userBookingForm.get_station_names(), index=0)
 
