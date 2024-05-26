@@ -10,7 +10,7 @@ def display():
 
     st.header("Setup Instructions")
     st.subheader("1. Install Required Python Libraries")
-    st.code("pip install requirements.txt", language="bash")
+    st.code("pip install streamlit pandas mysql-python-connector mysql", language="bash")
 
     st.subheader("2. Database Configuration")
     st.markdown("""
