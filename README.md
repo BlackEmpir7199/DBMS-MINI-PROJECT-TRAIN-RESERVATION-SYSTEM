@@ -13,7 +13,7 @@ The `authenticate_user` function is a crucial component designed to authenticate
 Ensure you have the necessary Python libraries installed by running the following command:
 
 ```bash
-pip install -r requirements.txt
+pip install streamlit pandas mysql-python-connector mysql
 ```
 
 ### 2. Database Configuration
